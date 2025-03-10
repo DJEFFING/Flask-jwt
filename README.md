@@ -27,8 +27,7 @@ L'objectif est de **gérer l'authentification sans stocker les tokens dans `loca
 - 🐍 Flask (Micro-framework Python)
 - 🔑 Flask-JWT (pour la gestion des tokens JWT)
 - 📦 Flask-SQLAlchemy (pour la gestion de la base de données)
-- 🔄 Flask-Migrate (pour les migrations de base de données)
-- 🛠️ Werkzeug (pour le hachage des mots de passe)
+- 🛠️ flask_bcrypt (pour le hachage des mots de passe)
 
 ### **Frontend**
 - 🌐 HTML, CSS (interface utilisateur)
@@ -53,13 +52,6 @@ pip install -r requirements.txt  # Installe les dépendances
 ```
 
 ### **3️⃣ Configurer la base de données**
-```bash
-flask db init  # Initialisation des migrations
-flask db migrate -m "Initial migration"
-flask db upgrade  # Appliquer les migrations
-```
-
-### **4️⃣ Lancer l'application**
 ```bash
 flask run
 ```
@@ -137,10 +129,12 @@ Le serveur sera accessible sur **`http://127.0.0.1:5000`** 🚀
 ## 📁 **Arborescence du projet**
 ```
 auth-jwt-flask/
-│── app/
+│
 │   ├── models.py         # Définition des modèles (User, Token)
-│   ├── routes.py         # Routes API (authentification)
-│   ├── __init__.py       # Configuration Flask
+│   ├── auth_service.py         # fontion d'authentification
+│   ├── main_routes.py         # Routes API page(login,register,dashboad)
+│   ├── auth_routes.py         # Routes API (authentification)
+│   ├── main.py       # Configuration Flask
 │
 │── templates/
 │   ├── login.html        # Page de connexion
@@ -148,12 +142,12 @@ auth-jwt-flask/
 │   ├── dashboard.html    # Page protégée
 │
 │── static/
-│   ├── css/              # Fichiers CSS
-│   ├── js/               # Fichiers JavaScript
+    │── assets/
+│     ├── css/              # Fichiers CSS
+│     ├── js/               # Fichiers JavaScript
 │
-│── migrations/           # Dossier des migrations de base de données
-│── venv/                 # Environnement virtuel (ajouté à .gitignore)
-│── config.py             # Fichier de configuration (SECRET_KEY, DB, etc.)
+
+│── config.py             # Fichier de configuration (SECRET_KEY, DB, etc.) Vous devez créer le votre
 │── requirements.txt      # Dépendances du projet
 │── run.py                # Point d'entrée de l'application Flask
 │── README.md             # Documentation du projet
@@ -201,16 +195,3 @@ Ce projet est sous licence **MIT**. Tu peux l'utiliser librement et le modifier 
 ### **🚀 Merci d'avoir exploré ce projet !**
 Si ce projet t’a aidé, **n’oublie pas de laisser une ⭐ sur GitHub !** 😃🔥  
 ```
-
----
-
-### **🎯 Pourquoi ce README est parfait pour GitHub ?**
-✔ **Explication claire du projet**  
-✔ **Guide d'installation et d'utilisation**  
-✔ **Démonstration des fonctionnalités**  
-✔ **Arborescence pour comprendre l'organisation**  
-✔ **Possibilité d'améliorations futures**  
-✔ **Section pour contribuer**  
-
-🔥 **Ajoute ce fichier à ton projet et mets-le sur GitHub !** 🚀🐍  
-**Bravo pour ton projet et hâte de voir ce que tu feras ensuite !** 😃# Flask-jwt
